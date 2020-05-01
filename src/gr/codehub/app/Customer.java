@@ -9,18 +9,20 @@ public class Customer {
     private String address;
     private int customerID;
     private String email;
+    private String password;
     private static int nextID=1;
-    //variable to connect 1to1 connection basket with Customer relationship
+    //variable to connect 1to1 relationship basket with Customer
     private Basket basket;
 
     //Customer constructor with fields name,surname,address,email
     //we don't include customerID because system would incrementally add
     //customerID based on the previous one so that each customer is a unique object in our system.
-    public Customer(String name, String surname, String address, String email) {
+    public Customer(String name, String surname, String address, String email, String password) {
         this.name = name;
         this.surname = surname;
         this.address = address;
         this.email = email;
+        this.password = password;
         customerID = nextID++;
         this.basket = new Basket();
     }
@@ -31,27 +33,16 @@ public class Customer {
         this.surname = "";
         this.address = "";
         this.email = "";
+        this.password = "";
         customerID = nextID++;
         this.basket = new Basket();
     }
 
 
-    public void displayBasket(){
-        basket.display();
-    }
-
-    public void addToBasket(Product p){
-        this.basket.add(p);
-    }
-
-    public void removeFromBasket(Product p){
-        this.basket.remove(p);
-    }
 
     public Basket getBasket(){
         return basket;
     }
-
 
     //getters setters
     public void setName(String name) {
@@ -64,6 +55,14 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public String getPassword(){
+        return password;
     }
 
     public void setEmail(String email) {
